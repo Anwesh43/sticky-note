@@ -4,9 +4,13 @@ class StickyNote {
         this.text = text
         this.createDom()
     }
+    setText(text) {
+        this.text = text
+    }
     createDom() {
         this.div = document.createElement('div')
         this.div.style.background = '#F4FF81'
+        this.div.style.fontSize = Math.min(w,h)/30
         this.w = Math.min(w,h)/4
         this.h = Math.min(w,h)/3
         this.div.style.width = this.w
@@ -32,4 +36,16 @@ window.onmousemove = (event) {
             stickyNote.div.style.top = event.offsetY - stickyNote.h/2
         }
     })
+}
+this.text = document.createElement('input')
+var currNote = new StickyNote('')
+input.onkeyup = (event) =>{
+   if(event.keyCode == 32) {
+      currNote.handleMouseMove()
+      this.stickyNotes.push(currNote)
+      currNote = new StickyNote('')
+   }
+   else {
+      currNote.setText(input.value)
+   }
 }
